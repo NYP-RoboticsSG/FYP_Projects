@@ -1,0 +1,42 @@
+#<ExampleApp>:
+#    orientation: "vertical"
+#    Button:
+#        text: ""
+#        on_press: gif.anim_delay = 0.10
+#        on_press: gif._coreimage.anim_reset(True)
+#
+#        Image:
+#            id: gif
+#            source: 'on_off.gif'
+#            center: self.parent.center
+#            size: 500, 500
+#            allow_stretch: True
+#            anim_delay: -1
+#            anim_loop: 1
+
+Builder.load_string("""
+<ExampleApp>:
+    id: main
+    orientation: "vertical"
+    Button:
+        size_hint_x: None
+        size_hint_y: None
+        height: 300
+        width: self.height
+        center: self.parent.center
+        text: ""
+        on_press: gif.anim_delay = 0.09
+        on_press: gif._coreimage.anim_reset(True); root.change_state()
+
+        Image:
+            id: gif
+            source: root.power
+            center: self.parent.center
+            height: 300
+            width: self.height
+            allow_stretch: True
+            anim_delay: -1
+            anim_loop: 1
+
+
+""")
